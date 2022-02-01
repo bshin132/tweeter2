@@ -1,0 +1,30 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 120px;
+  background-color: #4056a1;
+  color:#FFFFFF;
+  padding: 0 1.5em 0 1.5em;
+}
+
+.new_tweet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.arrow {
+  margin: 0;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.fa-angle-double-down {
+  color: #ff0000;
+  cursor: pointer;
+}
+
