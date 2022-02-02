@@ -26,6 +26,12 @@
   color: #97ace9;
 }
 
+.user-profile-pic {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}
+
 .fa-user-astronaut {
   width: 40px;
 }

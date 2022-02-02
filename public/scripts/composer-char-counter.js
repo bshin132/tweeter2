@@ -1,5 +1,6 @@
 $(document).ready(function() {
   
+  //have to use named function because arrow functions don't work with 'this'
   $('#tweet-text').on('input', function() {    //this keyword refers to the selected element, in this case ('#tweet-text')
     //get the length of input value
     $numberOfValues = $(this).val().length;
