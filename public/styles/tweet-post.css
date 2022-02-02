@@ -1,0 +1,65 @@
+.post {
+  margin-top: 40px;
+  border: 3px solid #000000;
+  padding: 0 1.5em;
+}
+
+.post:hover {
+  -webkit-box-shadow: 8px 6px 0px 1px #97ace9;
+  box-shadow: 8px 6px 0px 1px #97ace9;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-id {
+  font-weight: 600;
+  color: #97ace9;
+}
+
+.fa-user-astronaut {
+  width: 40px;
+}
+
+.input {
+  margin: 25px 0 0 0;
+}
+
+.input-value {
+  font-weight: 600;
+}
+
+.border {
+  border: none;
+  border-bottom: 3px solid #000000;
+}
+
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  
+}
+
+.post-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #4056a1;
+  width: 90px;
+}
+
+.post-icons > i:hover {
+  color: #ffbe56;
+  cursor: pointer;
+}
