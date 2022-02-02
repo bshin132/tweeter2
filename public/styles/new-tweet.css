@@ -10,14 +10,6 @@
   font-family: 'Bungee', cursive;
 }
 
-.input {
-  overflow: hidden;
-  outline: none;
-  border: none;
-  background: none;
-  border-bottom: 3px solid #000000;
-}
-
 .button-count > button {
   background-color: #4056a1;
   color:#FFFFFF;
@@ -27,7 +19,7 @@
 }
 
 .counter {
-  color: #000000;
+  color: #545149;
 }
 
 .question {
@@ -38,6 +30,8 @@
   width: 100%;
   border: none;
   background: none;
+  overflow: hidden;
+  outline: none;
   resize: none;
   border-bottom: 3px solid black;
   height: 30px;
