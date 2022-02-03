@@ -1,3 +1,7 @@
+.fa-exclamation-circle {
+  color: #ff0000;
+}
+
 .new-tweet {
   display: flex;
   flex-direction: column;

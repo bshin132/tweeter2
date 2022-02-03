@@ -20,7 +20,7 @@ body {
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 300;
-  height: 10000px;
+  height: auto;
 }
 
 /*
@@ -35,6 +35,6 @@ body {
  .container {
   width: 90%;
   background-color: #f4f1ec;
-  margin: 0 auto;
+  margin: 40px auto;
  }
 

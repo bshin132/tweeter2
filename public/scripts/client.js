@@ -6,41 +6,46 @@
 
 const data = [
   {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
+    user: {
+      name: "Newton",
+      avatars: "https://i.imgur.com/73hZDYK.png",
+      handle: "@SirIsaac",
     },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
+    content: {
+      text: "If I have seen further it is by standing on the shoulders of giants",
     },
-    "created_at": 1461116232227
+    created_at: 1461116232227,
   },
   {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
+    user: {
+      name: "Descartes",
+      avatars: "https://i.imgur.com/nlhLi3I.png",
+      handle: "@rd",
     },
-    "created_at": 1461113959088
-  }
-]
+    content: {
+      text: "Je pense , donc je suis",
+    },
+    created_at: 1461113959088,
+  },
+];
 
-
-  const renderTweets = (tweets) => {
-  $("tweet-container").empty();
+//APPEND THE NEW POST EVERYTIME IT GETS THE NEW POST
+const renderTweets = (tweets) => {
+  $("#tweet-container").empty();
 
   tweets.forEach((tweet) => {
-    const tweetElement = createTweetElement(tweet)
-    $("#tweet-container").append(tweetElement);
+    const tweetElement = createTweetElement(tweet);
+    $("#tweet-container").prepend(tweetElement);
   });
-
 };
 
 
+//PREVENT XSS(USER CAN'T INPUT JAVASCRIPT) ESCAPE METHOD
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
 const createTweetElement = (tweetObj) => {
   const $tweet = `
@@ -54,7 +59,7 @@ const createTweetElement = (tweetObj) => {
   </header>
 
   <div class="input">
-    <p class="input-value">${tweetObj.content.text}</p>
+    <p class="input-value">${escape(tweetObj.content.text)}</p>
     <div class="border"></div>
   </div>
 
@@ -73,32 +78,48 @@ const createTweetElement = (tweetObj) => {
 };
 
 $(document).ready(() => {
-
-  $('#post-tweet').on('submit', (event) => {
+  $("#post-tweet").on("submit", (event) => {
     event.preventDefault();
-    const userData = $('#tweet-text').serialize();
-    $.ajax({
-      method:'POST',
-      url:'/tweets',
-      data: userData,
-    }).then(() => {
-      console.log("Successfully created");
-    })
-  })
+    const userData = $("#tweet-text").serialize();
+
+    //VALIDATE TO SEE IF THE CRITERIA MEETS
+    if (userData.length > 140) {
+      alert("Cannot enter more than 140 characters!");
+      return;
+    } else if (userData === "text=") {
+      alert("Cannot be blank!");
+      return;
+    } else {
+      //THIS ALLOWS THE BROWSER TO SUBMIT THE FORM WITHOUT REFRESHING
+      $.ajax({
+        url: "/tweets",
+        method: "POST",
+        data: userData,
+        success: () => {
+          loadTweets();
+          console.log("success");
+        },
+      });
+    }
+
+    $("#post-tweet").trigger("reset"); //CLEAR INPUT AFTER SUBMITTING
+  });
 
   //FETCH THE DATA(TWEETS)
   const loadTweets = () => {
     $.ajax({
-      method:'GET',
-      url:'/tweets'
-    }).then((res) => {
-      renderTweets(res);
-      console.log(res);
-    }).catch((err) => {
-      console.log(err);
-    });
+      method: "GET",
+      url: "/tweets",
+    })
+      .then((res) => {
+        renderTweets(res);
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-loadTweets()
+  loadTweets();
 
   renderTweets(data);
 });
