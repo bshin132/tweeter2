@@ -29,7 +29,7 @@ const data = [
   },
 ];
 
-//APPEND THE NEW POST EVERYTIME IT GETS THE NEW POST
+//APPEND THE NEW POST EVERYTIME IT GETS A NEW POST
 const renderTweets = (tweets) => {
   $("#tweet-container").empty();
 
@@ -38,7 +38,6 @@ const renderTweets = (tweets) => {
     $("#tweet-container").prepend(tweetElement);
   });
 };
-
 
 //PREVENT XSS(USER CAN'T INPUT JAVASCRIPT) ESCAPE METHOD
 const escape = function (str) {
@@ -78,17 +77,31 @@ const createTweetElement = (tweetObj) => {
 };
 
 $(document).ready(() => {
-  $("#post-tweet").on("submit", (event) => {
+  $("#post-tweet").on("submit", function (event) {
     event.preventDefault();
-    const userData = $("#tweet-text").serialize();
+    const userData = $(this).serialize();
+    const tweetLength = $("#tweet-text").val().length;
+  
+
 
     //VALIDATE TO SEE IF THE CRITERIA MEETS
-    if (userData.length > 140) {
-      alert("Cannot enter more than 140 characters!");
-      return;
-    } else if (userData === "text=") {
-      alert("Cannot be blank!");
-      return;
+    if (tweetLength > 140) {
+      $(".warning-sign").slideDown();
+      const $warningMessage = $(".warning-message");
+      $warningMessage.html("You cannot enter more than 140 characters!");
+      $(".warning").css({'display': 'flex'})
+      setTimeout(() => {
+        $(".warning-sign").slideUp();
+      }, 5000);
+
+    } else if (tweetLength === null || tweetLength === 0) {
+      $(".warning-sign").slideDown();
+      const $warningMessage = $(".warning-message");
+      $warningMessage.html("This field cannot be empty!");
+      $(".warning").css({'display': 'flex'})
+      setTimeout(() => {
+        $(".warning-sign").slideUp();
+      }, 5000);
     } else {
       //THIS ALLOWS THE BROWSER TO SUBMIT THE FORM WITHOUT REFRESHING
       $.ajax({
@@ -98,6 +111,7 @@ $(document).ready(() => {
         success: () => {
           loadTweets();
           console.log("success");
+          $(".warning-sign").slideUp(); 
         },
       });
     }
@@ -122,4 +136,7 @@ $(document).ready(() => {
   loadTweets();
 
   renderTweets(data);
+
+  //RESET THE COUNTER ONCE THE FORM IS SUBMITTED
+  //FIRST POST DOESNT SLIDE DOWN, JUST POPS UP
 });

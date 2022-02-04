@@ -30,3 +30,22 @@ nav {
   cursor: pointer;
 }
 
+.fa-angle-double-down {
+  -webkit-animation: mover 1s infinite alternate;
+  animation: mover 1s infinite alternate;
+  cursor: pointer;
+  margin-top:10px;
+}
+.fa-angle-double-down:hover {
+  -webkit-animation: mover 7s infinite alternate;
+  animation: mover 7s infinite alternate;
+}
+
+@keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-8px);
+  }
+}
