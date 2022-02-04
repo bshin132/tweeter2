@@ -49,6 +49,6 @@
   overflow: hidden;
   outline: none;
   resize: none;
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid #545149;
   height: 30px;
 }

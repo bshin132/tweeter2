@@ -82,7 +82,10 @@ $(document).ready(() => {
     const userData = $(this).serialize();
     const tweetLength = $("#tweet-text").val().length;
   
-
+    $('.fa-angle-double-down').on("click", function (event) {
+      event.preventDefault();
+      $('.new-tweet').toggle(1000);
+    }) //ASK ABOUT TRAVERSING, REVIEW WITH MENTOR
 
     //VALIDATE TO SEE IF THE CRITERIA MEETS
     if (tweetLength > 140) {
@@ -90,6 +93,7 @@ $(document).ready(() => {
       const $warningMessage = $(".warning-message");
       $warningMessage.html("You cannot enter more than 140 characters!");
       $(".warning").css({'display': 'flex'})
+      $(".counter").text("140").css({'color':'#545149'});
       setTimeout(() => {
         $(".warning-sign").slideUp();
       }, 5000);
@@ -138,6 +142,6 @@ $(document).ready(() => {
 
   renderTweets(data);
 
-  //RESET THE COUNTER ONCE THE FORM IS SUBMITTED
   //FIRST POST DOESNT SLIDE DOWN, JUST POPS UP
+  //THERE IS A BUG WHERE WHEN THE PAGE IS LOADED FIRST, ANIMATION DOESNT WORK
 });

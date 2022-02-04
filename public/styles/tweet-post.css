@@ -1,6 +1,6 @@
 .post {
   margin-top: 40px;
-  border: 3px solid #000000;
+  border: 3px solid #545149;
   padding: 0 1.5em;
   overflow-wrap: break-word;
 }
@@ -48,7 +48,7 @@
 
 .border {
   border: none;
-  border-bottom: 3px solid #000000;
+  border-bottom: 3px solid #545149;
 }
 
 
