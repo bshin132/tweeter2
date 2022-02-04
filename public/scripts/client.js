@@ -112,6 +112,7 @@ $(document).ready(() => {
           loadTweets();
           console.log("success");
           $(".warning-sign").slideUp(); 
+          $(".counter").text("140");
         },
       });
     }
