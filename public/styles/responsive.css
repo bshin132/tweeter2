@@ -1,0 +1,15 @@
+@media only screen and (min-width:1024px) {
+  body{
+    display: flex;
+  }
+  .header {
+    width: 50%;
+    height: 400px;
+    margin: 190px 20px 0px 30px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 119px 43px 0px 91px;
+  }
+}
