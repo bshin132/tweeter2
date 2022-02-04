@@ -1,5 +1,4 @@
 .warning {
-  display: none;
   justify-content: space-between;
   align-items: center;
   border: 3px solid #ff0000;
@@ -7,6 +6,10 @@
   font-weight: 600;
   width: 100%;
   color: #ff0000;
+}
+
+.warning-sign {
+  display: none;
 }
 
 .fa-exclamation-circle {

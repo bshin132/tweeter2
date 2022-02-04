@@ -52,6 +52,7 @@ const createTweetElement = (tweetObj) => {
 
 $(document).ready(() => {
   $("#post-tweet").on("submit", function (event) {
+    //GET THE LENGTH OF THE INPUT
     event.preventDefault();
     const userData = $(this).serialize();
     const tweetLength = $("#tweet-text").val().length;
@@ -63,10 +64,14 @@ $(document).ready(() => {
       $warningMessage.html("You cannot enter more than 140 characters!");
       $(".warning").css({ display: "flex" });
       $(".counter").text("140").css({ color: "#545149" });
+      $("#post-tweet").trigger("reset"); //CLEAR INPUT AFTER SUBMITTING
+
       setTimeout(() => {
         $(".warning-sign").slideUp();
       }, 5000);
-    } else if (tweetLength === null || tweetLength === 0) {
+      return;
+    }
+    if (tweetLength === null || tweetLength === 0) {
       $(".warning-sign").slideDown();
       const $warningMessage = $(".warning-message");
       $warningMessage.html("This field cannot be empty!");
@@ -74,20 +79,21 @@ $(document).ready(() => {
       setTimeout(() => {
         $(".warning-sign").slideUp();
       }, 5000);
-    } else {
-      //THIS ALLOWS THE BROWSER TO SUBMIT THE FORM WITHOUT REFRESHING
-      $.ajax({
-        url: "/tweets",
-        method: "POST",
-        data: userData,
-        success: () => {
-          loadTweets();
-          console.log("success");
-          $(".warning-sign").slideUp();
-          $(".counter").text("140");
-        },
-      });
+      return;
     }
+
+    //THIS ALLOWS THE BROWSER TO SUBMIT THE FORM WITHOUT REFRESHING
+    $.ajax({
+      url: "/tweets",
+      method: "POST",
+      data: userData,
+      success: () => {
+        loadTweets();
+        console.log("success");
+        $(".warning-sign").slideUp(); //UPON SUCCESS, REMOVE ERROR AND SET THE COUNTER TO 140
+        $(".counter").text("140");
+      },
+    });
     $("#post-tweet").trigger("reset"); //CLEAR INPUT AFTER SUBMITTING
   });
 
