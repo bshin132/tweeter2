@@ -1,13 +1,6 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
 //APPEND THE NEW POST EVERYTIME IT GETS A NEW POST
 const renderTweets = (tweets) => {
   $("#tweet-container").empty();
-
   tweets.forEach((tweet) => {
     const tweetElement = createTweetElement(tweet);
     $("#tweet-container").prepend(tweetElement);
@@ -64,7 +57,7 @@ $(document).ready(() => {
       $warningMessage.html("You cannot enter more than 140 characters!");
       $(".warning").css({ display: "flex" });
       $(".counter").text("140").css({ color: "#545149" });
-      $("#post-tweet").trigger("reset"); //CLEAR INPUT AFTER SUBMITTING
+      $("#post-tweet").trigger("reset");
 
       setTimeout(() => {
         $(".warning-sign").slideUp();
@@ -90,11 +83,11 @@ $(document).ready(() => {
       success: () => {
         loadTweets();
         console.log("success");
-        $(".warning-sign").slideUp(); //UPON SUCCESS, REMOVE ERROR AND SET THE COUNTER TO 140
+        $(".warning-sign").slideUp();
         $(".counter").text("140");
       },
     });
-    $("#post-tweet").trigger("reset"); //CLEAR INPUT AFTER SUBMITTING
+    $("#post-tweet").trigger("reset");
   });
 
   //STRETCH FORM TOGGLE
@@ -102,7 +95,7 @@ $(document).ready(() => {
     event.preventDefault();
     $(".new-tweet").slideToggle(1000);
     $("#tweet-text").focus();
-  }); //ASK ABOUT TRAVERSING, REVIEW WITH MENTOR
+  });
 
   //FETCH THE DATA(TWEETS)
   const loadTweets = () => {
@@ -119,9 +112,5 @@ $(document).ready(() => {
       });
   };
   loadTweets();
-
   renderTweets(data);
-
-  //FIRST POST ERROR DOESNT SLIDE DOWN, JUST POPS UP
-  //THERE IS A BUG WHERE WHEN THE PAGE IS LOADED FIRST, ANIMATION DOESNT WORK
 });
