@@ -51,12 +51,10 @@
   border-bottom: 3px solid #545149;
 }
 
-
 .footer {
   display: flex;
   justify-content: space-between;
   font-size: 18px;
-  
 }
 
 .post-icons {

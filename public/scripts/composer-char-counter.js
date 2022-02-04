@@ -13,13 +13,10 @@ $(document).ready(function() {
     //set the counter value to calculated value
     $counter.html($calculatedValue);
 
-
     if ($calculatedValue < 0) {
-      $counter.css({'color': '#ff0000'})
+      $counter.css({'color': '#ff0000'});
     } else {
-      $counter.css({'color': '#545149'})
+      $counter.css({'color': '#545149'});
     }
-
   })
-
 });

@@ -1,12 +1,11 @@
-.warning{
+.warning {
   display: none;
   justify-content: space-between;
   align-items: center;
   border: 3px solid #ff0000;
   padding: 0 1.5em;
   font-weight: 600;
-  width:100%;
-  /* height: 50px; */
+  width: 100%;
   color: #ff0000;
 }
 
@@ -22,14 +21,14 @@
 .button-count {
   display: flex;
   justify-content: space-between;
-  margin-top:15px;
-  font-family: 'Bungee', cursive;
+  margin-top: 15px;
+  font-family: "Bungee", cursive;
 }
 
 .button-count > button {
   background-color: #4056a1;
-  color:#FFFFFF;
-  border:none;
+  color: #ffffff;
+  border: none;
   cursor: pointer;
   padding: 7px;
 }

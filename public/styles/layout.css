@@ -6,7 +6,9 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -18,7 +20,7 @@ body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-weight: 300;
   height: auto;
 }
@@ -27,14 +29,13 @@ body {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
- .logo {
-  font-family: 'Bungee', cursive;   /* to change the font, import the link in html, then use font-family in css */
+.logo {
+  font-family: "Bungee", cursive; /* to change the font, import the link in html, then use font-family in css */
   cursor: pointer;
- }
+}
 
- .container {
+.container {
   width: 90%;
   background-color: #f4f1ec;
   margin: 40px auto;
- }
-
+}

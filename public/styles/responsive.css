@@ -2,6 +2,7 @@
   body{
     display: flex;
   }
+  
   .header {
     width: 50%;
     height: 400px;
@@ -12,4 +13,4 @@
     width: 100%;
     padding: 119px 43px 0px 91px;
   }
-}
+};

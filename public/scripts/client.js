@@ -70,7 +70,6 @@ const createTweetElement = (tweetObj) => {
       <i class="fas fa-flag"></i>
     </div>
   </footer>
-
 </article>
   `;
   return $tweet;
@@ -81,28 +80,29 @@ $(document).ready(() => {
     event.preventDefault();
     const userData = $(this).serialize();
     const tweetLength = $("#tweet-text").val().length;
-  
-    $('.fa-angle-double-down').on("click", function (event) {
+
+    //STRETCH FORM TOGGLE
+    $(".fa-angle-double-down").on("click", function (event) {
       event.preventDefault();
-      $('.new-tweet').toggle(1000);
-    }) //ASK ABOUT TRAVERSING, REVIEW WITH MENTOR
+      $(".new-tweet").toggle(1000);
+      $("#tweet-text").focus();
+    }); //ASK ABOUT TRAVERSING, REVIEW WITH MENTOR
 
     //VALIDATE TO SEE IF THE CRITERIA MEETS
     if (tweetLength > 140) {
       $(".warning-sign").slideDown();
       const $warningMessage = $(".warning-message");
       $warningMessage.html("You cannot enter more than 140 characters!");
-      $(".warning").css({'display': 'flex'})
-      $(".counter").text("140").css({'color':'#545149'});
+      $(".warning").css({ display: "flex" });
+      $(".counter").text("140").css({ color: "#545149" });
       setTimeout(() => {
         $(".warning-sign").slideUp();
       }, 5000);
-
     } else if (tweetLength === null || tweetLength === 0) {
       $(".warning-sign").slideDown();
       const $warningMessage = $(".warning-message");
       $warningMessage.html("This field cannot be empty!");
-      $(".warning").css({'display': 'flex'})
+      $(".warning").css({ display: "flex" });
       setTimeout(() => {
         $(".warning-sign").slideUp();
       }, 5000);
@@ -115,12 +115,11 @@ $(document).ready(() => {
         success: () => {
           loadTweets();
           console.log("success");
-          $(".warning-sign").slideUp(); 
+          $(".warning-sign").slideUp();
           $(".counter").text("140");
         },
       });
     }
-
     $("#post-tweet").trigger("reset"); //CLEAR INPUT AFTER SUBMITTING
   });
 
