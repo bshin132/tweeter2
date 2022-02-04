@@ -4,31 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const data = [
-  {
-    user: {
-      name: "Newton",
-      avatars: "https://i.imgur.com/73hZDYK.png",
-      handle: "@SirIsaac",
-    },
-    content: {
-      text: "If I have seen further it is by standing on the shoulders of giants",
-    },
-    created_at: 1461116232227,
-  },
-  {
-    user: {
-      name: "Descartes",
-      avatars: "https://i.imgur.com/nlhLi3I.png",
-      handle: "@rd",
-    },
-    content: {
-      text: "Je pense , donc je suis",
-    },
-    created_at: 1461113959088,
-  },
-];
-
 //APPEND THE NEW POST EVERYTIME IT GETS A NEW POST
 const renderTweets = (tweets) => {
   $("#tweet-container").empty();
@@ -81,13 +56,6 @@ $(document).ready(() => {
     const userData = $(this).serialize();
     const tweetLength = $("#tweet-text").val().length;
 
-    //STRETCH FORM TOGGLE
-    $(".fa-angle-double-down").on("click", function (event) {
-      event.preventDefault();
-      $(".new-tweet").toggle(1000);
-      $("#tweet-text").focus();
-    }); //ASK ABOUT TRAVERSING, REVIEW WITH MENTOR
-
     //VALIDATE TO SEE IF THE CRITERIA MEETS
     if (tweetLength > 140) {
       $(".warning-sign").slideDown();
@@ -123,6 +91,13 @@ $(document).ready(() => {
     $("#post-tweet").trigger("reset"); //CLEAR INPUT AFTER SUBMITTING
   });
 
+  //STRETCH FORM TOGGLE
+  $(".fa-angle-double-down").on("click", function (event) {
+    event.preventDefault();
+    $(".new-tweet").slideToggle(1000);
+    $("#tweet-text").focus();
+  }); //ASK ABOUT TRAVERSING, REVIEW WITH MENTOR
+
   //FETCH THE DATA(TWEETS)
   const loadTweets = () => {
     $.ajax({
@@ -141,6 +116,6 @@ $(document).ready(() => {
 
   renderTweets(data);
 
-  //FIRST POST DOESNT SLIDE DOWN, JUST POPS UP
+  //FIRST POST ERROR DOESNT SLIDE DOWN, JUST POPS UP
   //THERE IS A BUG WHERE WHEN THE PAGE IS LOADED FIRST, ANIMATION DOESNT WORK
 });
